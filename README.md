@@ -1,6 +1,6 @@
 # PHP
 
-  Supported tags:
+##  Supported tags
 
   7.4
 
@@ -26,7 +26,7 @@
   * wyga/php:8.2-fpm
   * wyga/php:8.2-fpm-alpine
 
-  All versions are compilted with following modules:
+###  All versions are precompiled with following modules:
 
 ```
 [PHP Modules]
@@ -81,3 +81,44 @@ zlib
 [Zend Modules]
 Zend OPcache
 ```
+
+###  Additional modules are precomipled but not enabled:
+
+```
+mcrypt
+mongodb
+memcache
+memcached
+redis
+xdebug
+```
+
+They can be enabled via commands:
+```
+docker-php-ext-enable-mcrypt
+docker-php-ext-enable-mongodb
+docker-php-ext-enable-memcache
+docker-php-ext-enable-memcached
+docker-php-ext-enable-redis
+docker-php-ext-enable-xdebug
+```
+
+or by using env-conf (docker compose example):
+```
+    environment:
+      ENVCFG: '/usr/local/etc/php/conf.d/runtime.ini:ENEXT'
+      ENEXT100: 'extension=mcrypt.so'
+      ENEXT103: 'extension=memcache.so'
+      ENEXT104: 'extension=memcached.so'
+      ENEXT105: 'extension=redis.so'
+      ENEXT106: 'extension=mongodb.so'
+      ENEXT999: 'zend_extension=xdebug.so'
+```
+
+# nginx
+
+## Supported tags
+
+  * wyga/nginx:1.23.2-alpine wyga/nginx:1.23-alpine wyga/nginx:mainline-alpine
+  * wyga/nginx:1.22.2-alpine wyga/nginx:1.22-alpine wyga/nginx:stable-alpine wyga/nginx:alpine
+
